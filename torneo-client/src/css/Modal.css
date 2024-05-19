@@ -1,0 +1,52 @@
+.modalCss {
+/* padding-bottom: 20rem; */
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  visibility: hidden; /* Ocultar el modal */
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Establecer la opacidad inicial en 0 */
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Agregar una transición de opacidad y transformación */
+}
+
+.modal-container {
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 2rem ;
+  min-width: 320px;
+  max-width: 480px;
+  min-height: 200px;
+  max-height: 1800px;
+  /* height: 80vh; */
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  /* padding-bottom: 100px; */
+    transform: scale(0.8); /* Escalar el modal inicialmente a 80% */
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  cursor: pointer;
+}
+
+.modalCss.is-open {
+  visibility: visible; /* Mostrar el modal */
+  opacity: 1;
+  display: flex;
+      transform: scale(1); /* Escalar el modal inicialmente a 80% */
+        transition-delay: 0s; /* Reiniciar el retraso de la transición para que comience inmediatamente */
+  /* margin-bottom: 120px; */
+
+
+}
