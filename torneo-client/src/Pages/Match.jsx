@@ -22,7 +22,7 @@ const Match = () => {
     const fetchMatchs = async () => {
       try {
         const response = await fetch(
-          `api/match/category/${ selectedOption }`
+          `/api/match/category/${ selectedOption }`
         )
         if ( response.ok ) {
           const data = await response.json()

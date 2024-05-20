@@ -7,7 +7,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 const Positions = () => {
   const { idCategory } = useParams()
   const { data: zones, loading } = useFetch(
-    `api/zone/${ idCategory }`
+    `/api/zone/${ idCategory }`
   )
 
   return (

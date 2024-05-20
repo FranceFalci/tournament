@@ -26,7 +26,7 @@ export const MatchForm = ( { idCategory, onMatchAdded, idPhase = null } ) => {
   const [resultTwo, setResultTwo] = useState( '' )
   const { data: teams } = useFetch(
     idCategory
-      ? `api/team/category/${ idCategory }`
+      ? `/api/team/category/${ idCategory }`
       : null
   )
   let finalNumDate = null
@@ -58,7 +58,7 @@ export const MatchForm = ( { idCategory, onMatchAdded, idPhase = null } ) => {
     setLoading( true )
     http
       .post(
-        `api/match/${ idCategory }`,
+        `/api/match/${ idCategory }`,
         {
           idTeamOne,
           idTeamTwo,

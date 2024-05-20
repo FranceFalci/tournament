@@ -58,7 +58,7 @@ const User = () => {
     }
 
     http
-      .put( `api/user/${ user.id }`, {
+      .put( `/api/user/${ user.id }`, {
         password: passwords.current,
         newPassword: passwords.new
       } )

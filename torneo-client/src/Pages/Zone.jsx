@@ -28,7 +28,7 @@ const Zone = ( { idCatProp } ) => {
       return
     }
     http
-      .put( `api/zone/${ id }`, {
+      .put( `/api/zone/${ id }`, {
         name: value
       } )
       .then( ( response ) => {
@@ -66,7 +66,7 @@ const Zone = ( { idCatProp } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/zone/${ id }` )
+          .del( `/api/zone/${ id }` )
           .then( ( response ) => {
             if ( response === false ) {
               throw Error( 'Ocurrió un error' )
@@ -108,7 +108,7 @@ const Zone = ( { idCatProp } ) => {
       return
     }
     http
-      .post( `api/zone/${ idCategory }`, {
+      .post( `/api/zone/${ idCategory }`, {
         name: formDataNewZone.name
       } )
       .then( ( response ) => {

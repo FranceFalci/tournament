@@ -17,7 +17,7 @@ const initialState = {
 const Cups = () => {
   const { idSeason } = useParams()
   const { data: categories } = useFetch(
-    `api/category/${ idSeason }`
+    `/api/category/${ idSeason }`
   )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'categoryCup', '' )
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
@@ -46,7 +46,7 @@ const Cups = () => {
       return
     }
     http
-      .post( `api/cup/${ selectedOption }`, formDataNewCup )
+      .post( `/api/cup/${ selectedOption }`, formDataNewCup )
       .then( ( response ) => {
         if ( response === false ) {
           throw Error( 'Ocurrió un error' )

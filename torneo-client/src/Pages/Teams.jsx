@@ -5,7 +5,7 @@ import { Loader } from '../components/Loader'
 const Teams = () => {
   const { idCategory } = useParams()
   const { data: teams, loading } = useFetch(
-    `api/team/category/${ idCategory }`
+    `/api/team/category/${ idCategory }`
   )
 
   return (

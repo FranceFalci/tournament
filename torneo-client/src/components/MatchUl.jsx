@@ -21,7 +21,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
   const [editedMatchId, setEditedMatchId] = useState()
 
   const { data: teams, loading } = useFetch(
-    category ? `api/team/category/${ category }` : null
+    category ? `/api/team/category/${ category }` : null
   )
 
   const onEdit = async ( e ) => {
@@ -50,7 +50,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
     }
 
     http
-      .put( `api/match/${ editedMatchId }`, {
+      .put( `/api/match/${ editedMatchId }`, {
         idTeamOne,
         idTeamTwo,
         resultOne,
@@ -88,7 +88,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/match/${ idMatch }` )
+          .del( `/api/match/${ idMatch }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )

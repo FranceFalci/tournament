@@ -7,7 +7,7 @@ import { PhaseCrud } from '../components/PhaseCRUD'
 const MatchCup = () => {
   const { idPhase } = useParams()
   const { data: categorie } = useFetch(
-    `api/category/phase/${ idPhase }`
+    `/api/category/phase/${ idPhase }`
   )
   // const { data: matchs, setData: setMatchs } = useFetch(
   //   `api/match/phase/${ idPhase }`
@@ -19,7 +19,7 @@ const MatchCup = () => {
     const fetchMatchs = async () => {
       try {
         const response = await fetch(
-          `api/match/phase/${ idPhase }`
+          `/api/match/phase/${ idPhase }`
         )
         if ( response !== false ) {
           const data = await response.json()

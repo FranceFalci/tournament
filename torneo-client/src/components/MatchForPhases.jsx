@@ -4,7 +4,7 @@ import { Match } from './Match'
 
 export const MatchForPhases = ( { phase } ) => {
   const { data: matchs } = useFetch(
-    `api/match/phase/${ phase.id_fase }`
+    `/api/match/phase/${ phase.id_fase }`
   )
 
   return (

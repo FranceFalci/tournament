@@ -18,7 +18,7 @@ const TeamsByZone = ( { idZoneProp } ) => {
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewTeam, setFormDataNewTeam] = useState( initialState )
   const { data: teams, setData: setTeams } = useFetch(
-    `api/team/zone/${ idZone }`
+    `/api/team/zone/${ idZone }`
   )
   const fileInputRef = useRef( null )
   const { loading, uploadImage, imageUrl, setImageUrl } = useImageUpload( )
@@ -45,7 +45,7 @@ const TeamsByZone = ( { idZoneProp } ) => {
     }
 
     http
-      .post( `api/team/${ idZone }`, {
+      .post( `/api/team/${ idZone }`, {
         name: formDataNewTeam.name,
         photoUrl: imageUrl
       } )

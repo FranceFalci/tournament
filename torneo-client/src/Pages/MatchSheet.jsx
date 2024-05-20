@@ -9,7 +9,7 @@ const SheetItemLazy = lazy( () => import( '../components/SheetItem' ) )
 const MatchSheet = ( { reload } ) => {
   const { idMatch } = useParams()
   const { data: sheets, loading } = useFetch(
-    `api/sheet/${ idMatch }`
+    `/api/sheet/${ idMatch }`
   )
   useEffect( () => {
   }, [reload] )

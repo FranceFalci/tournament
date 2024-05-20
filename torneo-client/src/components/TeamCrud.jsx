@@ -20,7 +20,7 @@ export const TeamCrud = ( { teams, setTeams } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/team/${ id }` )
+          .del( `/api/team/${ id }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )

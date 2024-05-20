@@ -4,9 +4,9 @@ import { MatchForPhases } from '../components/MatchForPhases'
 
 const SingleCupPublic = () => {
   const { idCup } = useParams()
-  const { data: phases } = useFetch( `api/phase/${ idCup }` )
+  const { data: phases } = useFetch( `/api/phase/${ idCup }` )
 
-  const { data: cup } = useFetch( `api/cup/name/${ idCup }` )
+  const { data: cup } = useFetch( `/api/cup/name/${ idCup }` )
 
   return (
     <>

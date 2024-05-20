@@ -34,7 +34,7 @@ export const TeamEdit = () => {
     }
 
     http
-      .put( `api/team/info/${ formData.id_equipo }`, {
+      .put( `team/info/${ formData.id_equipo }`, {
         name: formData.nombre,
         photoUrl: formData.logo_url
       } )
@@ -64,7 +64,7 @@ export const TeamEdit = () => {
     const fetchTeamById = async () => {
       try {
         const res = await fetch(
-          `api/team/${ idTeam }`
+          `/api/team/${ idTeam }`
         )
         const data = await res.json()
         if ( res.ok === false ) {

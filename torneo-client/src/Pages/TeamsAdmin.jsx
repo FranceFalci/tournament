@@ -9,7 +9,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 const TeamsAdmin = () => {
   const { idSeason } = useParams()
   const { data: categories } = useFetch(
-    `api/category/${ idSeason }`
+    `/api/category/${ idSeason }`
   )
 
   const [selectedOptionCategory, setSelectedOptionCategory] = useState( '' )
@@ -17,7 +17,7 @@ const TeamsAdmin = () => {
 
   const { data: zones } = useFetch(
     selectedOptionCategory
-      ? `api/zone/${ selectedOptionCategory }`
+      ? `/api/zone/${ selectedOptionCategory }`
       : null
   )
   const handleSelectCatChange = ( event ) => {

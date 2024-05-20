@@ -6,7 +6,7 @@ import { Loader } from '../components/Loader'
 const Scorers = () => {
   const { idCategory } = useParams()
   const { data: players, loading } = useFetch(
-    `api/player/scorers/${ idCategory }`
+    `/api/player/scorers/${ idCategory }`
   )
   return (
     <div className='container-player-static'>

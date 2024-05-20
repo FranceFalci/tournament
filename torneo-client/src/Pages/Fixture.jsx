@@ -7,7 +7,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 const Fixture = ( ) => {
   const { idCategory } = useParams()
   const { data: matchs, loading } = useFetch(
-    `api/match/category/${ idCategory }`
+    `/api/match/category/${ idCategory }`
   )
 
   return (

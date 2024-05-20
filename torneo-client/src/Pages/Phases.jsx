@@ -17,7 +17,7 @@ const Phases = () => {
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewPhase, setFormDataNewPhase] = useState( initialState )
   const { data: phases, setData: setPhases } = useFetch(
-    `api/phase/${ idCup }`
+    `/api/phase/${ idCup }`
   )
   const http = helpHttp()
   const handleInputChange = ( e ) => {
@@ -38,7 +38,7 @@ const Phases = () => {
       return
     }
     http
-      .post( `api/phase/${ idCup }`, formDataNewPhase )
+      .post( `/api/phase/${ idCup }`, formDataNewPhase )
       .then( ( response ) => {
         if ( response === false ) {
           throw Error( 'Ocurrio un error' )
@@ -70,7 +70,7 @@ const Phases = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/phase/${ idPhase }` )
+          .del( `/api/phase/${ idPhase }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )
@@ -99,7 +99,7 @@ const Phases = () => {
 
   const onEdit = async ( id, name, order ) => {
     http
-      .put( `api/phase/${ id }`, {
+      .put( `/api/phase/${ id }`, {
         order,
         name
       } )

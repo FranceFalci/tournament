@@ -8,7 +8,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 export const Zones = () => {
   const { idSeason } = useParams()
   const { data: categories } = useFetch(
-    `api/category/${ idSeason }`
+    `/api/category/${ idSeason }`
   )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'selectedOptionZone', '' )
 

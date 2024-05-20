@@ -6,7 +6,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 const Cards = () => {
   const { idCategory } = useParams()
   const { data: players, loading } = useFetch(
-    `api/player/cards/${ idCategory }`
+    `/api/player/cards/${ idCategory }`
   )
 
   return (

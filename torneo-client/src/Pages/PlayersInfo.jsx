@@ -18,12 +18,12 @@ const PlayersInfo = () => {
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewPlayer, setFormDataNewPlayer] = useState( initialState )
   const { data: players, setData: setPlayers } = useFetch(
-    `api/player/team/${ idTeam }`
+    `/api/player/team/${ idTeam }`
   )
 
   const onEdit = async ( id, value ) => {
     http
-      .put( `api/player/info/${ id }`, {
+      .put( `/api/player/info/${ id }`, {
         name: value
       } )
       .then( ( response ) => {
@@ -61,7 +61,7 @@ const PlayersInfo = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/player/${ id }` )
+          .del( `/api/player/${ id }` )
           .then( ( response ) => {
             if ( response.ok === false ) { throw Error( 'Ocurrió un error' ) }
             Swal.fire(
@@ -94,7 +94,7 @@ const PlayersInfo = () => {
       return
     }
     http
-      .post( `api/player/${ idTeam }`, {
+      .post( `/api/player/${ idTeam }`, {
         name: formDataNewPlayer.name
       } )
       .then( ( response ) => {

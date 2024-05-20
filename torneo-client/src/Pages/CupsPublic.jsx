@@ -7,7 +7,7 @@ import { NoCup } from '../components/NoCup'
 const CupsPublic = () => {
   const { idCategory } = useParams()
   const { data: cups, loading } = useFetch(
-    `api/cup/${ idCategory }`
+    `/api/cup/${ idCategory }`
   )
   return (
     <div className='d-flex container-home'>

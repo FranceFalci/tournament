@@ -12,7 +12,7 @@ const DashBoardAdmin = () => {
     const fetchSeason = async () => {
       try {
         const res = await fetch(
-          `api/season/active/${ user.id }`
+          `/api/season/active/${ user.id }`
         )
         const data = await res.json()
         if ( !res.ok ) {

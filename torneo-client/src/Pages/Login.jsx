@@ -20,7 +20,7 @@ const Login = () => {
       } )
     }
     http
-      .post( 'api/user/sign-in', formData )
+      .post( '/api/user/sign-in', formData )
       .then( ( response ) => {
         if ( response.ok === false ) {
           throw Error( 'Ocurrió un error..' )

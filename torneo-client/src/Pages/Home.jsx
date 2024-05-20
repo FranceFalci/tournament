@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 const Home = () => {
   const { data: tournaments, loading, error } = useFetch(
-    'api/tournament/'
+    '/api/tournament/'
   )
   localStorage.removeItem( 'selectCategoryTournament' )
   if ( error ) {

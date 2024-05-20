@@ -6,7 +6,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 const PlayersStatics = () => {
   const { idTeam } = useParams()
   const { data: players, loading } = useFetch(
-    `api/team/statics/${ idTeam }`
+    `/api/team/statics/${ idTeam }`
   )
 
   return (

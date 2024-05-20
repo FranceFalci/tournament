@@ -20,10 +20,10 @@ const Sheet = () => {
   const [formData, setFormData] = useState( initialState )
   const http = helpHttp()
   const { data: sheets, setData: setSheets } = useFetch(
-    `api/sheet/${ idMatch }`
+    `/api/sheet/${ idMatch }`
   )
   const { data: players } = useFetch(
-    `api/player/match/${ idMatch }`
+    `/api/player/match/${ idMatch }`
   )
   const handleAddZoneSubmit = async ( e ) => {
     e.preventDefault()
@@ -34,7 +34,7 @@ const Sheet = () => {
       } )
       return openModalAdd()
     }
-    http.post( `api/sheet/${ idMatch }`, {
+    http.post( `/api/sheet/${ idMatch }`, {
       ...formData
     } )
       .then( ( response ) => {
@@ -67,7 +67,7 @@ const Sheet = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `api/sheet/${ idSheet }` )
+          .del( `/api/sheet/${ idSheet }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error!' )

@@ -17,12 +17,12 @@ const Tournament = ( { idTournamentProp = 0 } ) => {
   localStorage.removeItem( 'dateSelectedOption' )
 
   const { data: season, loading: seasonLoading } = useFetch(
-    `api/season/${ id }`
+    `/api/season/${ id }`
   )
 
   const { data: categories, loading: categoriesLoading } = useFetch(
     season
-      ? `api/category/${ season[0]?.id_temporada }`
+      ? `/api/category/${ season[0]?.id_temporada }`
       : null
   )
 

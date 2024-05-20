@@ -2,7 +2,7 @@ import { useFetch } from '../hooks/useFetch'
 
 export const PositionTable = ( { idZone, name } ) => {
   const { data: teams } = useFetch(
-    `api/team/position/${ idZone }`
+    `/api/team/position/${ idZone }`
   )
 
   return (
