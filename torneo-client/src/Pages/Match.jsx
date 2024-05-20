@@ -9,7 +9,7 @@ import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 
 const Match = () => {
   const { idSeason } = useParams()
-  const { data: categories } = useFetch( `api/category/${ idSeason }` )
+  const { data: categories } = useFetch( `/api/category/${ idSeason }` )
   const [matchAdded, setMatchAdded] = useState( false )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'selectedOption', '' )
   const [matchs, setMatchs] = useState( [] )
