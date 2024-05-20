@@ -5,8 +5,9 @@ import { useParams } from 'react-router-dom'
 import { useModal } from '../hooks/useModal'
 import Swal from 'sweetalert2'
 import { helpHttp } from '../helpers/helpHttp'
-import { InputLabel, MenuItem, Modal, Select, TextField } from '@mui/material'
+import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { MatchSheetProp } from '../components/MatchSheetProp'
+import { Modal } from '../components/Modal'
 
 const initialState = {
   time: '1',
