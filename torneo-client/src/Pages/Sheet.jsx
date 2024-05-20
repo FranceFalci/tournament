@@ -98,7 +98,6 @@ const Sheet = () => {
   }
   useEffect( () => {
     if ( sheets ) {
-      // Este efecto se activará cada vez que sheets cambie
       // Aquí puedes agregar lógica adicional que deseas ejecutar cuando sheets se actualice
     }
   }, [sheets] )
@@ -115,79 +114,78 @@ const Sheet = () => {
         >
           Agregar
         </button>
-        <Modal
-          isOpen={isOpenAdd}
-          openModal={openModalAdd}
-          closeModal={closeModalAdd}
-        >
-          <form onSubmit={handleAddZoneSubmit} className='form-modal-sheet'>
-            <InputLabel htmlFor='type'>Tipo</InputLabel>
+      </div>
+      <Modal
+        isOpen={isOpenAdd}
+        openModal={openModalAdd}
+        closeModal={closeModalAdd}
+      >
+        <form onSubmit={handleAddZoneSubmit} className='form-modal-sheet'>
+          <InputLabel htmlFor='type'>Tipo</InputLabel>
 
-            <Select
-              id='type'
-              name='type'
-              value={formData.type}
-              onChange={handleChangeInput}
-              className='select-sheet'
-            >
-              <MenuItem value='0'>GOL</MenuItem>
-              <MenuItem value='1'>TARJETA AMARILLA</MenuItem>
-              <MenuItem value='2'>TARJETA ROJA</MenuItem>
-            </Select>
-            <InputLabel htmlFor='minute'>Minuto</InputLabel>
-            <TextField
-              className='select-sheet'
-              name='minute'
-              type='number'
-              value={formData.minute}
-              onChange={handleChangeInput}
-            />
+          <Select
+            id='type'
+            name='type'
+            value={formData.type}
+            onChange={handleChangeInput}
+            className='select-sheet'
+          >
+            <MenuItem value='0'>GOL</MenuItem>
+            <MenuItem value='1'>TARJETA AMARILLA</MenuItem>
+            <MenuItem value='2'>TARJETA ROJA</MenuItem>
+          </Select>
+          <InputLabel htmlFor='minute'>Minuto</InputLabel>
+          <TextField
+            className='select-sheet'
+            name='minute'
+            type='number'
+            value={formData.minute}
+            onChange={handleChangeInput}
+          />
 
-            <InputLabel htmlFor='time'>Tiempo</InputLabel>
-            <Select
-              name='time'
-              id='time'
-              onChange={handleChangeInput}
-              value={formData.time}
-              displayEmpty
-              className='select-sheet'
-            >
-              <MenuItem value='1'>primer</MenuItem>
-              <MenuItem value='2'>segundo</MenuItem>
-            </Select>
-            <InputLabel htmlFor='idPlayer'>Jugador</InputLabel>
-            <Select
-              name='idPlayer'
-              id='idPlayer'
-              onChange={handleChangeInput}
-              value={formData.idPlayer}
-              displayEmpty
-              className='select-sheet'
-            >
-              <MenuItem value=''>Seleccione..</MenuItem>
-              {players &&
+          <InputLabel htmlFor='time'>Tiempo</InputLabel>
+          <Select
+            name='time'
+            id='time'
+            onChange={handleChangeInput}
+            value={formData.time}
+            displayEmpty
+            className='select-sheet'
+          >
+            <MenuItem value='1'>primer</MenuItem>
+            <MenuItem value='2'>segundo</MenuItem>
+          </Select>
+          <InputLabel htmlFor='idPlayer'>Jugador</InputLabel>
+          <Select
+            name='idPlayer'
+            id='idPlayer'
+            onChange={handleChangeInput}
+            value={formData.idPlayer}
+            displayEmpty
+            className='select-sheet'
+          >
+            <MenuItem value=''>Seleccione..</MenuItem>
+            {players &&
               players.map( ( player ) => (
                 <MenuItem key={player.id_jugador} value={player.id_jugador}>
                   {player.nombre}
                 </MenuItem>
               ) )}
-            </Select>
-            <button
-              className='btn-input'
-              type='submit'
-              onClick={() => {
-                closeModalAdd()
-              }}
-            >
+          </Select>
+          <button
+            className='btn-input'
+            type='submit'
+            onClick={() => {
+              closeModalAdd()
+            }}
+          >
             Agregar
-            </button>
-          </form>
-        </Modal>
-      </div>
+          </button>
+        </form>
+      </Modal>
       <>
         {sheets ? (
-          <MatchSheetProp sheets={sheets} onDelete={onDelete}/>
-
+          <MatchSheetProp sheets={sheets} onDelete={onDelete} />
         ) : (
           <p>Aún no hay ficha!</p>
         )}
