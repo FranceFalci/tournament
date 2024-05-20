@@ -110,6 +110,7 @@ const Sheet = () => {
           className='add-button'
           onClick={() => {
             openModalAdd()
+            console.log( 'que pasa' )
           }}
         >
           Agregar

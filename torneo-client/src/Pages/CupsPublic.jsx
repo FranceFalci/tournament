@@ -17,23 +17,25 @@ const CupsPublic = () => {
         )
         : (
           <>
-            {( cups && cups.length > 0 )
+            {cups && cups.length > 0
               ? (
                 <div className='options'>
-
                   {cups.map( ( cup ) => (
-                    <button type='button' className='button' key={cup.id_copa}>
-                      <Link to={`/cup/${ cup.id_copa }`} className='link'>
+                    <Link
+                      to={`/cup/${ cup.id_copa }`}
+                      className='link'
+                      key={cup.id_copa}
+                    >
+                      <button type='button' className='button'>
                         {cup.tipo}
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   ) )}
                 </div>
               )
               : (
                 <NoCup />
-              ) }
-
+              )}
           </>
         )}
     </div>

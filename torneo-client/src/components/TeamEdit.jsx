@@ -34,7 +34,7 @@ const TeamEdit = () => {
     }
 
     http
-      .put( `team/info/${ formData.id_equipo }`, {
+      .put( `/api/team/info/${ formData.id_equipo }`, {
         name: formData.nombre,
         photoUrl: formData.logo_url
       } )
