@@ -31,41 +31,41 @@ const DashBoardAdmin = () => {
     <>
       <div className='options'>
         <h1>Hola, Admin!</h1>
-        <button type='button' className='button' onClick={() => {}}>
-          <Link to={`/match/${ season?.id_temporada }`} className='link'>
+        <Link to={`/match/${ season?.id_temporada }`} className='link'>
+          <button type='button' className='button' onClick={() => {}}>
             Partidos
-          </Link>
-        </button>
-        <button type='button' className='button' onClick={() => {}}>
-          <Link to={'/categories/admin'} className='link'>
+          </button>
+        </Link>
+        <Link to={'/categories/admin'} className='link'>
+          <button type='button' className='button' onClick={() => {}}>
             Categorias
-          </Link>
-        </button>
-        <button type='button' className='button' onClick={() => {}}>
-          <Link to={`/zones/${ season?.id_temporada }`} className='link'>
+          </button>
+        </Link>
+        <Link to={`/zones/${ season?.id_temporada }`} className='link'>
+          <button type='button' className='button' onClick={() => {}}>
             Zonas
-          </Link>
-        </button>
-        <button type='button' className='button' onClick={() => {}}>
-          <Link to={`/teams/adm/${ season?.id_temporada } `} className='link'>
+          </button>
+        </Link>
+        <Link to={`/teams/adm/${ season?.id_temporada } `} className='link'>
+          <button type='button' className='button' onClick={() => {}}>
             Equipos
-          </Link>
-        </button>
-        <button type='button' className='button'>
-          <Link to={`/cups/admin/${ season?.id_temporada } `} className='link'>
+          </button>
+        </Link>
+        <Link to={`/cups/admin/${ season?.id_temporada } `} className='link'>
+          <button type='button' className='button'>
             Copas
-          </Link>
-        </button>
-        <button type='button' className='button'>
-          <Link to={'/user/admin'} className='link'>
+          </button>
+        </Link>
+        <Link to={'/user/admin'} className='link'>
+          <button type='button' className='button'>
             Usuario
-          </Link>
-        </button>
-        <button type='button' className='button'>
-          <Link to={'/'} className='link'>
+          </button>
+        </Link>
+        <Link to={'/'} className='link'>
+          <button type='button' className='button'>
             Inicio
-          </Link>
-        </button>
+          </button>
+        </Link>
         <button
           className='button'
           onClick={() => {
