@@ -53,7 +53,7 @@ export const AppRouter = () => {
       <Route path='/positions/:idCategory' element={<PositionsLazy />} />
       <Route path='/fixture/:idCategory' element={<FixtureLazy />} />
       <Route path='/fixture/sheet/:idMatch' element={<MatchSheetLazy />} />
-      <Route path='/cups/:isdCategory' element={<CupsPublicLazy />} />
+      <Route path='/cups/:idCategory' element={<CupsPublicLazy />} />
       <Route path='/cup/:idCup' element={<CupPublicLazy />} />
 
       <Route

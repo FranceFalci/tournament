@@ -110,6 +110,7 @@ align-items: center;
   display: block;
   z-index: 1000;
   width: 100%;
+  text-align: center;
   /* height: 5vh; */
   background-color: var(--main-color);
 }
@@ -141,7 +142,7 @@ align-items: center;
 
 .lottie{
   /* border: 2px solid red; */
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 /* TOURNAMENT */
 .cont-tournament{
@@ -313,7 +314,7 @@ box-shadow: 0 4px 10px 0 rgba(0,0,0,.3);
   margin-top: 20px;
   font-size: 11px;
   border: none;
-  font-weight: 100;
+  /* font-weight: 100; */
   background-color: var(--main-color);
   border-radius: 25px;
   padding: 0px 12px;

@@ -65,7 +65,7 @@ export const ZonesComponent = ( { zones, onEdit, onDelete } ) => {
           </div>
         )
         : (
-          <p>aun no hay zonas</p>
+          <p>Aún no hay zonas</p>
         )}
     </div>
   )

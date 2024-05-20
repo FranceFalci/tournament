@@ -6,7 +6,7 @@ import useImageUpload from '../hooks/useImageUpload'
 import Swal from 'sweetalert2'
 import { helpHttp } from '../helpers/helpHttp'
 
-export const TeamEdit = () => {
+const TeamEdit = () => {
   const { idTeam } = useParams()
   const http = helpHttp()
 
@@ -166,3 +166,5 @@ export const TeamEdit = () => {
     </>
   )
 }
+
+export default TeamEdit

@@ -51,31 +51,31 @@ const Tournament = ( { idTournamentProp = 0 } ) => {
                   Posiciones
                     </button>
                   </Link>
-                  <button type='button' className='button' onClick={() => {}}>
-                    <Link to={`/fixture/${ selectedOption }`} className='link'>
+                  <Link to={`/fixture/${ selectedOption }`} className='link'>
+                    <button type='button' className='button' onClick={() => {}}>
                   Fixture
-                    </Link>
-                  </button>
-                  <button type='button' className='button' onClick={() => {}}>
-                    <Link to={`/cups/${ selectedOption }`} className='link'>
+                    </button>
+                  </Link>
+                  <Link to={`/cups/${ selectedOption }`} className='link'>
+                    <button type='button' className='button' onClick={() => {}}>
                   Copas
-                    </Link>
-                  </button>
-                  <button type='button' className='button' onClick={() => {}}>
-                    <Link to={`/scorers/${ selectedOption }`} className='link'>
+                    </button>
+                  </Link>
+                  <Link to={`/scorers/${ selectedOption }`} className='link'>
+                    <button type='button' className='button' onClick={() => {}}>
                   Goleadores
-                    </Link>
-                  </button>
-                  <button type='button' className='button' onClick={() => {}}>
-                    <Link to={`/cards/${ selectedOption }`} className='link'>
+                    </button>
+                  </Link>
+                  <Link to={`/cards/${ selectedOption }`} className='link'>
+                    <button type='button' className='button' onClick={() => {}}>
                   Tarjetas
-                    </Link>
-                  </button>
-                  <button type='button' className='button' onClick={() => {}}>
-                    <Link to={`/teams/${ selectedOption }`} className='link'>
+                    </button>
+                  </Link>
+                  <Link to={`/teams/${ selectedOption }`} className='link'>
+                    <button type='button' className='button' onClick={() => {}}>
                   Equipos
-                    </Link>
-                  </button>
+                    </button>
+                  </Link>
                 </div>
               )
               : (

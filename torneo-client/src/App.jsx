@@ -10,10 +10,12 @@ function App () {
       <AuthProvider>
         <SeasonProvider>
           <Suspense fallback={<Loader />}>
-
             <AppRouter />
           </Suspense>
-          <footer className='footer'> hola</footer>
+          <footer className='footer'>
+
+            Desarrollado por Softy © - +54 381-301-9083
+          </footer>
         </SeasonProvider>
       </AuthProvider>
     </>

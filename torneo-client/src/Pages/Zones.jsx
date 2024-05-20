@@ -5,7 +5,7 @@ import { useFetch } from '../hooks/useFetch'
 import Zone from './Zone'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 
-export const Zones = () => {
+const Zones = () => {
   const { idSeason } = useParams()
   const { data: categories } = useFetch(
     `/api/category/${ idSeason }`
@@ -32,3 +32,5 @@ export const Zones = () => {
     </div>
   )
 }
+
+export default Zones

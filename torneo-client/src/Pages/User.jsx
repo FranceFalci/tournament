@@ -82,7 +82,7 @@ const User = () => {
 
   return (
     <div className='d-flex'>
-      <img src='../public/icons/user-icon.png' width='200px'></img>
+      <img src='../icons/user-icon.png' width='200px'></img>
       <p>Email: {user.email}</p>
       <form onSubmit={handleSubmit} className='login-form  '>
         {Object.entries( passwords ).map( ( [field, value] ) => (

@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <div className='container-login'>
       <img
-        src='../public/icons/user-icon.png'
+        src='../icons/user-icon.png'
         alt='user-icon'
         width='200px'
       ></img>
