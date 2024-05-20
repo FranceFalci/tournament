@@ -16,7 +16,7 @@ const Zone = ( { idCatProp } ) => {
   const idCategory = idCatProp || idCatParamFromRoute
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewZone, setFormDataNewZone] = useState( initialState )
-  const { data: zones, setData: setZones } = useFetch( `api/zone/${ idCategory }` )
+  const { data: zones, setData: setZones } = useFetch( `/api/zone/${ idCategory }` )
   const http = helpHttp()
   const onEdit = async ( id, value ) => {
     if ( !value ) {
