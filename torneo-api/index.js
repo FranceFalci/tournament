@@ -14,7 +14,7 @@ import { cupRouter } from './src/routes/cup.route.js'
 import { phaseRouter } from './src/routes/phase.route.js'
 import { userRouter } from './src/routes/user.route.js'
 
-const allowedOrigins = ['http://localhost:5173', 'https://xp98dj70-5173.brs.devtunnels.ms']
+const allowedOrigins = ['http://localhost:5173', 'https://tutorneo.info', 'https://www.tutorneo.info', 'http://tutorneo.info', 'http://www.tutorneo.info']
 
 const corsOptions = {
   origin: function ( origin, callback ) {
