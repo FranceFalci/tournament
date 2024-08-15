@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { SelectCategory } from '../components/Select'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import Zone from './Zone'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { baseUrl } from '../helpers/baseUrlApi'
+import { SeasonContext } from '../context/Season'
 
 const Zones = () => {
-  const { idSeason } = useParams()
+  // const { idSeason } = useParams()
+  const { season } = useContext( SeasonContext )
+
   const { data: categories } = useFetch(
-    `/api/category/${ idSeason }`
+    `${ baseUrl }/category/${ season.id_temporada }`
   )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'selectedOptionZone', '' )
 

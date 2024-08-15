@@ -5,6 +5,7 @@ import { Loader } from './Loader'
 import useImageUpload from '../hooks/useImageUpload'
 import Swal from 'sweetalert2'
 import { helpHttp } from '../helpers/helpHttp'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const TeamEdit = () => {
   const { idTeam } = useParams()
@@ -34,7 +35,7 @@ const TeamEdit = () => {
     }
 
     http
-      .put( `/api/team/info/${ formData.id_equipo }`, {
+      .put( `${ baseUrl }/team/info/${ formData.id_equipo }`, {
         name: formData.nombre,
         photoUrl: formData.logo_url
       } )
@@ -64,7 +65,7 @@ const TeamEdit = () => {
     const fetchTeamById = async () => {
       try {
         const res = await fetch(
-          `/api/team/${ idTeam }`
+          `${ baseUrl }/team/${ idTeam }`
         )
         const data = await res.json()
         if ( res.ok === false ) {

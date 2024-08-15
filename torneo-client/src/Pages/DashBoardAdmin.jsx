@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/Auth'
 import { SeasonContext } from '../context/Season'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const DashBoardAdmin = () => {
   const { user } = useContext( AuthContext )
@@ -12,7 +13,7 @@ const DashBoardAdmin = () => {
     const fetchSeason = async () => {
       try {
         const res = await fetch(
-          `/api/season/active/${ user.id }`
+          `${ baseUrl }/season/active/${ user.id }`
         )
         const data = await res.json()
         if ( !res.ok ) {
@@ -31,7 +32,7 @@ const DashBoardAdmin = () => {
     <>
       <div className='options'>
         <h1>Hola, Admin!</h1>
-        <Link to={`/match/${ season?.id_temporada }`} className='link'>
+        <Link to={'/partidos/admin'} className='link'>
           <button type='button' className='button' onClick={() => {}}>
             Partidos
           </button>
@@ -41,17 +42,17 @@ const DashBoardAdmin = () => {
             Categorias
           </button>
         </Link>
-        <Link to={`/zones/${ season?.id_temporada }`} className='link'>
+        <Link to={'/zones/admin'} className='link'>
           <button type='button' className='button' onClick={() => {}}>
             Zonas
           </button>
         </Link>
-        <Link to={`/teams/adm/${ season?.id_temporada } `} className='link'>
-          <button type='button' className='button' onClick={() => {}}>
+        <Link to={'/equipos/admin'} className='link'>
+          <button type='button' className='button'>
             Equipos
           </button>
         </Link>
-        <Link to={`/cups/admin/${ season?.id_temporada } `} className='link'>
+        <Link to={'/cups/admin/info '} className='link'>
           <button type='button' className='button'>
             Copas
           </button>

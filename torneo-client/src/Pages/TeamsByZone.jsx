@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { Modal } from '../components/Modal'
 import Swal from 'sweetalert2'
@@ -7,18 +7,20 @@ import { useModal } from '../hooks/useModal'
 import { helpHttp } from '../helpers/helpHttp'
 import useImageUpload from '../hooks/useImageUpload'
 import { TeamCrud } from '../components/TeamCrud'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const initialState = {
   name: ''
 }
 const TeamsByZone = ( { idZoneProp } ) => {
   const http = helpHttp()
-  const { idZone: idZoneParam } = useParams()
-  const idZone = idZoneProp || idZoneParam
+  const location = useLocation()
+  const { idProp } = location.state || {}
+  const idZone = idZoneProp || idProp
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewTeam, setFormDataNewTeam] = useState( initialState )
   const { data: teams, setData: setTeams } = useFetch(
-    `/api/team/zone/${ idZone }`
+    `${ baseUrl }/team/zone/${ idZone }`
   )
   const fileInputRef = useRef( null )
   const { loading, uploadImage, imageUrl, setImageUrl } = useImageUpload( )
@@ -45,7 +47,7 @@ const TeamsByZone = ( { idZoneProp } ) => {
     }
 
     http
-      .post( `/api/team/${ idZone }`, {
+      .post( `${ baseUrl }/team/${ idZone }`, {
         name: formDataNewTeam.name,
         photoUrl: imageUrl
       } )

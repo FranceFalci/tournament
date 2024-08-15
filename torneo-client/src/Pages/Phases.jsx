@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { useModal } from '../hooks/useModal'
 import { Modal } from '../components/Modal'
 import Swal from 'sweetalert2'
 import { helpHttp } from '../helpers/helpHttp'
 import { ItemComponent } from '../components/ItemComponent'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const initialState = {
   name: '',
   order: ''
 }
 const Phases = () => {
-  const { idCup } = useParams()
+  const location = useLocation()
+  const { idProp: idCup } = location.state || {}
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewPhase, setFormDataNewPhase] = useState( initialState )
   const { data: phases, setData: setPhases } = useFetch(
-    `/api/phase/${ idCup }`
+    `${ baseUrl }/phase/${ idCup }`
   )
   const http = helpHttp()
   const handleInputChange = ( e ) => {
@@ -38,7 +40,7 @@ const Phases = () => {
       return
     }
     http
-      .post( `/api/phase/${ idCup }`, formDataNewPhase )
+      .post( `${ baseUrl }/phase/${ idCup }`, formDataNewPhase )
       .then( ( response ) => {
         if ( response === false ) {
           throw Error( 'Ocurrio un error' )
@@ -70,7 +72,7 @@ const Phases = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/phase/${ idPhase }` )
+          .del( `${ baseUrl }/phase/${ idPhase }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )
@@ -99,7 +101,7 @@ const Phases = () => {
 
   const onEdit = async ( id, name, order ) => {
     http
-      .put( `/api/phase/${ id }`, {
+      .put( `${ baseUrl }/phase/${ id }`, {
         order,
         name
       } )

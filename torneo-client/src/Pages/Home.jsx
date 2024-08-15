@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 import { Loader } from '../components/Loader'
 import { useFetch } from '../hooks/useFetch'
 import Swal from 'sweetalert2'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Home = () => {
   const { data: tournaments, loading, error } = useFetch(
-    '/api/tournament/'
+    `${ baseUrl }/tournament/`
   )
+  console.log( tournaments )
   localStorage.removeItem( 'selectCategoryTournament' )
   if ( error ) {
     return Swal.fire(

@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { Loader } from '../components/Loader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Teams = () => {
   const { idCategory } = useParams()
   const { data: teams, loading } = useFetch(
-    `/api/team/category/${ idCategory }`
+    `${ baseUrl }/team/category/${ idCategory }`
   )
 
   return (

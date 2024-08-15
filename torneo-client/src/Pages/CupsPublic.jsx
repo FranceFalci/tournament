@@ -3,11 +3,12 @@ import { useFetch } from '../hooks/useFetch'
 import { Link, useParams } from 'react-router-dom'
 import { Loader } from '../components/Loader'
 import { NoCup } from '../components/NoCup'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const CupsPublic = () => {
   const { idCategory } = useParams()
   const { data: cups, loading } = useFetch(
-    `/api/cup/${ idCategory }`
+    `${ baseUrl }/cup/${ idCategory }`
   )
   return (
     <div className='d-flex container-home'>

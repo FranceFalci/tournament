@@ -12,6 +12,7 @@ import { Modal } from './Modal'
 import Swal from 'sweetalert2'
 
 import { helpHttp } from '../helpers/helpHttp'
+import { baseUrl } from '../helpers/baseUrlApi'
 const MenuItemLazy = lazy( () => import( '@mui/material/MenuItem' ) )
 const SelectLazy = lazy( () => import( '@mui/material/Select' ) )
 
@@ -26,7 +27,7 @@ export const MatchForm = ( { idCategory, onMatchAdded, idPhase = null } ) => {
   const [resultTwo, setResultTwo] = useState( '' )
   const { data: teams } = useFetch(
     idCategory
-      ? `/api/team/category/${ idCategory }`
+      ? `${ baseUrl }/team/category/${ idCategory }`
       : null
   )
   let finalNumDate = null
@@ -58,7 +59,7 @@ export const MatchForm = ( { idCategory, onMatchAdded, idPhase = null } ) => {
     setLoading( true )
     http
       .post(
-        `/api/match/${ idCategory }`,
+        `${ baseUrl }/match/${ idCategory }`,
         {
           idTeamOne,
           idTeamTwo,

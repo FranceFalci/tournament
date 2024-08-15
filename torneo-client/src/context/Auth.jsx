@@ -25,6 +25,7 @@ export const AuthProvider = ( { children } ) => {
 
   const logout = () => {
     window.localStorage.removeItem( 'user' )
+    // post a backend
     document.cookie = 'access_token=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'
     const action = {
       type: 'logout',

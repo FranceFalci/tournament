@@ -1,28 +1,29 @@
 /* eslint-disable multiline-ternary */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SelectCategory } from '../components/Select'
-import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import TeamsByZone from './TeamsByZone'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
+import { baseUrl } from '../helpers/baseUrlApi'
+import { SeasonContext } from '../context/Season'
 
 const TeamsAdmin = () => {
-  const { idSeason } = useParams()
-  const { data: categories } = useFetch(
-    `/api/category/${ idSeason }`
-  )
+  // const { idSeason } = useParams()
+  console.log( 'hola' )
+  const { season } = useContext( SeasonContext )
+
+  const { data: categories } = useFetch( `${ baseUrl }/category/6` )
 
   const [selectedOptionCategory, setSelectedOptionCategory] = useState( '' )
   const [selectedOptionZone, setSelectedOptionZone] = useState( '' )
 
   const { data: zones } = useFetch(
-    selectedOptionCategory
-      ? `/api/zone/${ selectedOptionCategory }`
-      : null
+    selectedOptionCategory ? `${ baseUrl }/zone/${ selectedOptionCategory }` : null
   )
   const handleSelectCatChange = ( event ) => {
     const selectedValue = event.target.value
     setSelectedOptionCategory( selectedValue )
+    setSelectedOptionZone( '' )
     localStorage.setItem( 'selectedOption', selectedValue )
   }
   const handleSelectZoneChange = ( event ) => {
@@ -30,6 +31,9 @@ const TeamsAdmin = () => {
     setSelectedOptionZone( selectedValue )
     localStorage.setItem( 'selectedZone', selectedValue )
   }
+  useEffect( () => {
+    console.log( 'TeamsAdmin component mounted' )
+  }, [] )
 
   useEffect( () => {
     const storedValueCategory = localStorage.getItem( 'selectedOption' )
@@ -44,6 +48,7 @@ const TeamsAdmin = () => {
   }, [] )
 
   return (
+    // <h1>fsd</h1>
     <div className='container-teams-admin'>
       <div className='cont-select'>
         <SelectCategory
@@ -70,12 +75,12 @@ const TeamsAdmin = () => {
           )}
 
           {/* <option value=''>Seleccionar zona</option>
-              {zones &&
-              zones.map( ( item ) => (
-                <option key={item.id_zona} value={item.id_zona}>
-                  {item.nombre}
-                </option>
-              ) )} */}
+            {zones &&
+            zones.map( ( item ) => (
+              <option key={item.id_zona} value={item.id_zona}>
+                {item.nombre}
+              </option>
+            ) )} */}
           {/* </select> */}
 
           {selectedOptionZone ? (

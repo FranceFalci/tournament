@@ -3,11 +3,12 @@ import { PositionTable } from '../components/PositionTable'
 import { useFetch } from '../hooks/useFetch'
 import { Loader } from '../components/Loader'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Positions = () => {
   const { idCategory } = useParams()
   const { data: zones, loading } = useFetch(
-    `/api/zone/${ idCategory }`
+    `${ baseUrl }/zone/${ idCategory }`
   )
 
   return (

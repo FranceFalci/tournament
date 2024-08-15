@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { Modal } from '../components/Modal'
 import Swal from 'sweetalert2'
@@ -7,23 +7,26 @@ import { helpHttp } from '../helpers/helpHttp'
 import { ItemComponent } from '../components/ItemComponent'
 import { useModal } from '../hooks/useModal'
 import { useState } from 'react'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const initialState = {
   name: ''
 }
 
 const PlayersInfo = () => {
-  const { idTeam } = useParams()
+  // const { idTeam } = useParams()
+  const location = useLocation()
+  const { idTeam } = location.state || {}
   const http = helpHttp()
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewPlayer, setFormDataNewPlayer] = useState( initialState )
   const { data: players, setData: setPlayers } = useFetch(
-    `/api/player/team/${ idTeam }`
+    `${ baseUrl }/player/team/${ idTeam }`
   )
 
   const onEdit = async ( id, value ) => {
     http
-      .put( `/api/player/info/${ id }`, {
+      .put( `${ baseUrl }/player/info/${ id }`, {
         name: value
       } )
       .then( ( response ) => {
@@ -61,7 +64,7 @@ const PlayersInfo = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/player/${ id }` )
+          .del( `${ baseUrl }/player/${ id }` )
           .then( ( response ) => {
             if ( response.ok === false ) { throw Error( 'Ocurrió un error' ) }
             Swal.fire(
@@ -94,7 +97,7 @@ const PlayersInfo = () => {
       return
     }
     http
-      .post( `/api/player/${ idTeam }`, {
+      .post( `${ baseUrl }/player/${ idTeam }`, {
         name: formDataNewPlayer.name
       } )
       .then( ( response ) => {

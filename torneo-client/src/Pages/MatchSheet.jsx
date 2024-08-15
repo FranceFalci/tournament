@@ -4,12 +4,13 @@ import { useFetch } from '../hooks/useFetch'
 import { Loader } from '../components/Loader'
 // import { SheetItem } from '../components/SheetItem'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
+import { baseUrl } from '../helpers/baseUrlApi'
 const SheetItemLazy = lazy( () => import( '../components/SheetItem' ) )
 
 const MatchSheet = ( { reload } ) => {
   const { idMatch } = useParams()
   const { data: sheets, loading } = useFetch(
-    `/api/sheet/${ idMatch }`
+    `${ baseUrl }/sheet/${ idMatch }`
   )
   useEffect( () => {
   }, [reload] )

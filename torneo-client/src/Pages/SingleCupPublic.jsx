@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { MatchForPhases } from '../components/MatchForPhases'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const SingleCupPublic = () => {
   const { idCup } = useParams()
-  const { data: phases } = useFetch( `/api/phase/${ idCup }` )
+  const { data: phases } = useFetch( `${ baseUrl }/phase/${ idCup }` )
 
-  const { data: cup } = useFetch( `/api/cup/name/${ idCup }` )
+  const { data: cup } = useFetch( `${ baseUrl }/cup/name/${ idCup }` )
 
   return (
     <>

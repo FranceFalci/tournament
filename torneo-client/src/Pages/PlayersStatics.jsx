@@ -2,11 +2,12 @@ import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { Loader } from '../components/Loader'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const PlayersStatics = () => {
   const { idTeam } = useParams()
   const { data: players, loading } = useFetch(
-    `/api/team/statics/${ idTeam }`
+    `${ baseUrl }/team/statics/${ idTeam }`
   )
 
   return (

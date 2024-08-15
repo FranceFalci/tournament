@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { helpHttp } from '../helpers/helpHttp'
 import Swal from 'sweetalert2'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 export const TeamCrud = ( { teams, setTeams } ) => {
   const http = helpHttp()
@@ -20,7 +21,7 @@ export const TeamCrud = ( { teams, setTeams } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/team/${ id }` )
+          .del( `${ baseUrl }/team/${ id }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )
@@ -101,7 +102,7 @@ export const TeamCrud = ( { teams, setTeams } ) => {
                 </button>
 
                 <button className='other'>
-                  <Link to={`/players/info/${ item.id_equipo }`}>jugadores</Link>
+                  <Link to={'/players/info/admin'} state={{ idTeam: item.id_equipo }}>jugadores</Link>
                 </button>
               </div>
             </div>

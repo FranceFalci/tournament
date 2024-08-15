@@ -2,11 +2,12 @@ import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 import { Loader } from '../components/Loader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Scorers = () => {
   const { idCategory } = useParams()
   const { data: players, loading } = useFetch(
-    `/api/player/scorers/${ idCategory }`
+    `${ baseUrl }/player/scorers/${ idCategory }`
   )
   return (
     <div className='container-player-static'>

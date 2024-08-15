@@ -6,6 +6,7 @@ import { Modal } from '../components/Modal'
 import { useModal } from '../hooks/useModal'
 import { useFetch } from '../hooks/useFetch'
 import { helpHttp } from '../helpers/helpHttp'
+import { baseUrl } from '../helpers/baseUrlApi'
 const initialState = {
   name: ''
 }
@@ -17,7 +18,7 @@ const Categories = () => {
   const http = helpHttp()
   const { data: categories, setData: setCategories } = useFetch(
     season?.id_temporada
-      ? `/api/category/${ season.id_temporada }`
+      ? `${ baseUrl }/category/${ season.id_temporada }`
       : null
   )
 
@@ -31,7 +32,7 @@ const Categories = () => {
       openModalAdd()
     }
     http
-      .post( `/api/category/${ season.id_temporada }`, {
+      .post( `${ baseUrl }/category/${ season.id_temporada }`, {
         name: formDataNewCategory.name
       } )
       .then( ( response ) => {
@@ -70,7 +71,7 @@ const Categories = () => {
       return
     }
     http
-      .put( `/api/category/${ id }`, {
+      .put( `${ baseUrl }/category/${ id }`, {
         name: value
       } )
       .then( ( response ) => {
@@ -110,7 +111,7 @@ const Categories = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/category/${ id }` )
+          .del( `${ baseUrl }/category/${ id }` )
           .then( ( response ) => {
             if ( response === false ) {
               throw Error( 'Ocurrió un error' )

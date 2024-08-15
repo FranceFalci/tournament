@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { AuthProvider } from './context/Auth.jsx'
 import { SeasonProvider } from './context/Season.jsx'
 import { AppRouter } from './router/AppRouter'
@@ -9,9 +8,7 @@ function App () {
     <>
       <AuthProvider>
         <SeasonProvider>
-          <Suspense fallback={<Loader />}>
-            <AppRouter />
-          </Suspense>
+          <AppRouter />
           <footer className='footer'>
 
             Desarrollado por Softy © - +54 381-301-9083

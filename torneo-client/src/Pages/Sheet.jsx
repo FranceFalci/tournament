@@ -8,6 +8,7 @@ import { helpHttp } from '../helpers/helpHttp'
 import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { MatchSheetProp } from '../components/MatchSheetProp'
 import { Modal } from '../components/Modal'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const initialState = {
   time: '1',
@@ -21,10 +22,10 @@ const Sheet = () => {
   const [formData, setFormData] = useState( initialState )
   const http = helpHttp()
   const { data: sheets, setData: setSheets } = useFetch(
-    `/api/sheet/${ idMatch }`
+    `${ baseUrl }/sheet/${ idMatch }`
   )
   const { data: players } = useFetch(
-    `/api/player/match/${ idMatch }`
+    `${ baseUrl }/player/match/${ idMatch }`
   )
   const handleAddZoneSubmit = async ( e ) => {
     e.preventDefault()
@@ -35,7 +36,7 @@ const Sheet = () => {
       } )
       return openModalAdd()
     }
-    http.post( `/api/sheet/${ idMatch }`, {
+    http.post( `${ baseUrl }/sheet/${ idMatch }`, {
       ...formData
     } )
       .then( ( response ) => {
@@ -68,7 +69,7 @@ const Sheet = () => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/sheet/${ idSheet }` )
+          .del( `${ baseUrl }/sheet/${ idSheet }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error!' )

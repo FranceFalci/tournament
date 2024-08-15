@@ -89,7 +89,7 @@ export const ItemComponent = ( {
                     </button>
                     {redirectLink && (
                       <button className='other '>
-                        <Link to={`/${ redirectLink }/${ item.id }`}>
+                        <Link to={`/${ redirectLink }/admin`} state={{ idProp: item.id }}>
                           {redirectName}
                         </Link>
                       </button>
@@ -145,7 +145,7 @@ export const ItemComponent = ( {
                         closeModal()
                       }}
                     >
-                  Guardar
+                    Guardar
                     </button>
                   </form>
                 </Modal>

@@ -1,10 +1,11 @@
 import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { Match } from './Match'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 export const MatchForPhases = ( { phase } ) => {
   const { data: matchs } = useFetch(
-    `/api/match/phase/${ phase.id_fase }`
+    `${ baseUrl }/match/phase/${ phase.id_fase }`
   )
 
   return (

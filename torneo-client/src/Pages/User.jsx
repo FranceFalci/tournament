@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { AuthContext } from '../context/Auth'
 import { helpHttp } from '../helpers/helpHttp'
 import Swal from 'sweetalert2'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const initialStatePassword = {
   current: '',
@@ -58,7 +59,7 @@ const User = () => {
     }
 
     http
-      .put( `/api/user/${ user.id }`, {
+      .put( `${ baseUrl }/user/${ user.id }`, {
         password: passwords.current,
         newPassword: passwords.new
       } )
@@ -70,6 +71,7 @@ const User = () => {
           title: 'Contraseña cambiada con exito',
           icon: 'success'
         } )
+        setPasswords( initialStatePassword )
       } )
       .catch( ( err ) => {
         Swal.fire( {

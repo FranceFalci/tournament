@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { MatchForm } from '../components/MatchForm'
 import { useFetch } from '../hooks/useFetch'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { PhaseCrud } from '../components/PhaseCRUD'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const MatchCup = () => {
-  const { idPhase } = useParams()
+  const location = useLocation()
+  const { idProp: idPhase } = location.state || {}
   const { data: categorie } = useFetch(
-    `/api/category/phase/${ idPhase }`
+    `${ baseUrl }/category/phase/${ idPhase }`
   )
   // const { data: matchs, setData: setMatchs } = useFetch(
   //   `api/match/phase/${ idPhase }`
   // )
-  const [matchs, setMatchs] = useState()
+  const [matchs, setMatchs] = useState( [] )
   const [reload, setReload] = useState()
 
   useEffect( () => {
     const fetchMatchs = async () => {
       try {
         const response = await fetch(
-          `/api/match/phase/${ idPhase }`
+          `${ baseUrl }/match/phase/${ idPhase }`
         )
         if ( response !== false ) {
           const data = await response.json()

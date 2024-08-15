@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { AuthContext } from '../context/Auth'
 import { helpHttp } from '../helpers/helpHttp'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -20,7 +21,7 @@ const Login = () => {
       } )
     }
     http
-      .post( '/api/user/sign-in', formData )
+      .post( `${ baseUrl }/user/sign-in`, formData )
       .then( ( response ) => {
         if ( response.ok === false ) {
           throw Error( 'Ocurrió un error..' )

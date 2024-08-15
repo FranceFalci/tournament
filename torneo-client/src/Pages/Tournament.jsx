@@ -4,6 +4,7 @@ import { SelectCategory } from '../components/Select'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { Loader } from '../components/Loader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const Tournament = ( { idTournamentProp = 0 } ) => {
   // const { idTournament } = useParams();
@@ -17,12 +18,12 @@ const Tournament = ( { idTournamentProp = 0 } ) => {
   localStorage.removeItem( 'dateSelectedOption' )
 
   const { data: season, loading: seasonLoading } = useFetch(
-    `/api/season/${ id }`
+    `${ baseUrl }/season/${ id }`
   )
 
   const { data: categories, loading: categoriesLoading } = useFetch(
     season
-      ? `/api/category/${ season[0]?.id_temporada }`
+      ? `${ baseUrl }/category/${ season[0]?.id_temporada }`
       : null
   )
 

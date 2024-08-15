@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom'
 import { SelectCategory } from '../components/Select'
 import { useFetch } from '../hooks/useFetch'
-import { lazy, useState } from 'react'
+import { lazy, useContext, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { Modal } from '../components/Modal'
 import { useModal } from '../hooks/useModal'
 import Swal from 'sweetalert2'
 import { helpHttp } from '../helpers/helpHttp'
 import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { baseUrl } from '../helpers/baseUrlApi'
+import { SeasonContext } from '../context/Season'
 
 const CupsByCategoryLazy = lazy( () => import( '../components/CupsByCategory' ) )
 const initialState = {
@@ -15,10 +17,8 @@ const initialState = {
   order: ''
 }
 const Cups = () => {
-  const { idSeason } = useParams()
-  const { data: categories } = useFetch(
-    `/api/category/${ idSeason }`
-  )
+  const { season } = useContext( SeasonContext )
+  const { data: categories } = useFetch( `${ baseUrl }/category/${ season.id_temporada }` )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'categoryCup', '' )
   const [isOpenAdd, openModalAdd, closeModalAdd] = useModal()
   const [formDataNewCup, setFormDataNewCup] = useState( initialState )
@@ -46,7 +46,7 @@ const Cups = () => {
       return
     }
     http
-      .post( `/api/cup/${ selectedOption }`, formDataNewCup )
+      .post( `${ baseUrl }/cup/${ selectedOption }`, formDataNewCup )
       .then( ( response ) => {
         if ( response === false ) {
           throw Error( 'Ocurrió un error' )

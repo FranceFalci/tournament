@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { useParams } from 'react-router-dom'
 import { MatchForm } from '../components/MatchForm'
@@ -6,14 +6,22 @@ import { SelectCategory } from '../components/Select'
 import { MatchCrud } from '../components/MatchCRUD'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { SelectCategoryLoader } from '../components/SelectCategoryLoader'
+import { baseUrl } from '../helpers/baseUrlApi'
+import { SeasonContext } from '../context/Season'
 
 const Match = () => {
-  const { idSeason } = useParams()
-  const { data: categories } = useFetch( `/api/category/${ idSeason }` )
+  // const { idSeason } = useParams()
+  const { season } = useContext( SeasonContext )
+  console.log( 'hola' )
+
+  const { data: categories } = useFetch(
+    `${ baseUrl }/category/${ season.id_temporada }`
+  )
   const [matchAdded, setMatchAdded] = useState( false )
   const [selectedOption, setSelectedOption] = useLocalStorage( 'selectedOption', '' )
   const [matchs, setMatchs] = useState( [] )
 
+  console.log( categories )
   const handleMatchAdded = () => {
     setMatchAdded( !matchAdded )
   }
@@ -22,7 +30,7 @@ const Match = () => {
     const fetchMatchs = async () => {
       try {
         const response = await fetch(
-          `/api/match/category/${ selectedOption }`
+          `${ baseUrl }/match/category/${ selectedOption }`
         )
         if ( response.ok ) {
           const data = await response.json()
@@ -39,7 +47,7 @@ const Match = () => {
     }
     if ( selectedOption ) { fetchMatchs() }
   }, [selectedOption, matchAdded] )
-
+  console.log( categories )
   return (
     <div className='container-match'>
       <SelectCategory
@@ -47,7 +55,6 @@ const Match = () => {
         items={categories}
         handleChange={( e ) => { setSelectedOption( e.target.value ) }}
       />
-
       {selectedOption
         ? (
           <>

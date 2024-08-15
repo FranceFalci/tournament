@@ -2,13 +2,14 @@ import { ItemComponent } from './ItemComponent'
 import { useFetch } from '../hooks/useFetch'
 import { helpHttp } from '../helpers/helpHttp'
 import Swal from 'sweetalert2'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 const CupsByCategory = ( { idCategory, reload } ) => {
-  const { data: cups, setData: setCups } = useFetch( `/api/cup/${ idCategory }` )
+  const { data: cups, setData: setCups } = useFetch( `${ baseUrl }/cup/${ idCategory }` )
   const http = helpHttp()
   const onEdit = async ( id, name, order ) => {
     http
-      .put( `/api/cup/${ id }`, {
+      .put( `${ baseUrl }/cup/${ id }`, {
         order,
         type: name
       } )
@@ -50,7 +51,7 @@ const CupsByCategory = ( { idCategory, reload } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/cup/${ id }` )
+          .del( `${ baseUrl }/cup/${ id }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )

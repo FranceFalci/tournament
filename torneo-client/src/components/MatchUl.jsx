@@ -8,6 +8,7 @@ import { useModal } from '../hooks/useModal'
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { useFetch } from '../hooks/useFetch'
 import { Loader } from './Loader'
+import { baseUrl } from '../helpers/baseUrlApi'
 
 export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
   const http = helpHttp()
@@ -21,7 +22,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
   const [editedMatchId, setEditedMatchId] = useState()
 
   const { data: teams, loading } = useFetch(
-    category ? `/api/team/category/${ category }` : null
+    category ? `${ baseUrl }/team/category/${ category }` : null
   )
 
   const onEdit = async ( e ) => {
@@ -50,7 +51,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
     }
 
     http
-      .put( `/api/match/${ editedMatchId }`, {
+      .put( `${ baseUrl }/match/${ editedMatchId }`, {
         idTeamOne,
         idTeamTwo,
         resultOne,
@@ -88,7 +89,7 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
     } ).then( async ( result ) => {
       if ( result.isConfirmed ) {
         http
-          .del( `/api/match/${ idMatch }` )
+          .del( `${ baseUrl }/match/${ idMatch }` )
           .then( ( response ) => {
             if ( response.ok === false ) {
               throw Error( 'Ocurrió un error' )
