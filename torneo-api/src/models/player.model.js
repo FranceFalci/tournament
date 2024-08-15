@@ -208,7 +208,7 @@ export class PlayerModel {
         `SELECT jugador.nombre, equipo.nombre as equipo,
     COUNT(CASE WHEN ficha.tipo = 1 THEN 1 END) AS tarjetas_amarillas,
     COUNT(CASE WHEN ficha.tipo = 2 THEN 1 END) AS tarjetas_rojas FROM jugador INNER JOIN ficha USING (id_jugador)
-    INNER JOIN partido USING (id_partido)INNER JOIN equipo USING (id_equipo) WHERE id_categoria = ? GROUP BY
+    INNER JOIN partido USING (id_partido)INNER JOIN equipo USING (id_equipo) WHERE id_categoria = ? AND jugador.nombre NOT LIKE 'en contra%' GROUP BY
     jugador.id_jugador, jugador.nombre,equipo.nombre ORDER BY tarjetas_amarillas DESC,tarjetas_rojas DESC; `, [idCategory] )
       if ( cards.length === 0 ) return []
       return cards
@@ -227,7 +227,7 @@ export class PlayerModel {
     COUNT(CASE WHEN ficha.tipo = 2 THEN 1 END) AS tarjetas_rojas
     FROM jugador INNER JOIN ficha USING (id_jugador) INNER JOIN
     partido USING (id_partido) INNER JOIN equipo USING (id_equipo)
-    WHERE id_jugador = ? GROUP BY jugador.id_jugador, jugador.nombre,equipo.nombre;`, [idPlayer] )
+    WHERE id_jugador = ?  AND jugador.nombre NOT LIKE 'en contra%' GROUP BY jugador.id_jugador, jugador.nombre,equipo.nombre;`, [idPlayer] )
       if ( player.length === 0 ) return
       return player[0]
     } catch ( error ) {

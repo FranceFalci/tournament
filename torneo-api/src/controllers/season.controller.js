@@ -19,7 +19,8 @@ export class SeasonController {
     const { id } = req.params
     try {
       const season = await this.seasonModel.getActiveSeasonByUserId( { idUser: id } )
-      if ( season ) return res.json( season )
+      if ( season ) return res.status( 200 ).json( season )
+      res.status( 404 ).json( { message: 'No existe una temporada' } )
     } catch ( error ) {
       res.status( 404 ).json( { message: error.message } )
     }

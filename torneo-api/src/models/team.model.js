@@ -184,7 +184,7 @@ export class TeamModel {
     COUNT(CASE WHEN ficha.tipo = 2 THEN 1 END) AS tarjetas_rojas
     FROM jugador LEFT JOIN ficha USING (id_jugador) LEFT JOIN 
     partido USING (id_partido) INNER JOIN equipo USING (id_equipo)
-    WHERE id_equipo = ? GROUP BY jugador.id_jugador, jugador.nombre,equipo.nombre;`, [idTeam] )
+    WHERE id_equipo = ? AND nombre NOT LIKE 'en contra %' GROUP BY jugador.id_jugador, jugador.nombre,equipo.nombre;`, [idTeam] )
       return players
     } catch ( error ) {
       console.log( error )
