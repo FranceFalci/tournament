@@ -34,6 +34,7 @@ export class UserController {
 
       const validPassword = bcryptjs.compareSync( password, validUser.contrasenia )
       if ( !validPassword ) return res.status( 400 ).json( { ok: false, message: 'Datos incorrectos' } )
+      if ( !validUser.activo ) return res.status( 400 ).json( { ok: false, message: 'Usuario inactiva' } )
 
       const token = jwt.sign( { id: validUser.id_usuario }, process.env.JWT_SECRET )
       res.status( 200 ).cookie( 'access_token', token, {

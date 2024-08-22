@@ -57,6 +57,7 @@ export class MatchController {
 
   updateInfo = async ( req, res ) => {
     try {
+      console.log( req.body )
       const result = validatePartialMatch( req.body )
 
       if ( !result.success ) {
