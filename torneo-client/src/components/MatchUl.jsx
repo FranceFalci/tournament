@@ -163,10 +163,10 @@ export const MatchUl = ( { matchs, category, onMatchAdded, phase } ) => {
                       setIdTeamOne( match.id_eq_uno )
                       setIdTeamTwo( match.id_eq_dos )
                       setResultOne(
-                        match.res_uno === null ? ' ' : match.res_uno
+                        match.res_uno === null ? '' : match.res_uno
                       )
                       setResultTwo(
-                        match.res_dos === null ? ' ' : match.res_dos
+                        match.res_dos === null ? '' : match.res_dos
                       )
                       setNumDate( match.num_fecha )
                       setEditedMatchId( match.id_partido )

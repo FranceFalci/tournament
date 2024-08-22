@@ -33,6 +33,7 @@ export const MatchForm = ( { idCategory, onMatchAdded, idPhase = null } ) => {
   let finalNumDate = null
   const handleAddMatchSubmit = async ( e ) => {
     e.preventDefault()
+
     if ( idPhase ) {
       if ( !idTeamOne || !idTeamTwo ) {
         Swal.fire( {
